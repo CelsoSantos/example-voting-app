@@ -1,19 +1,27 @@
+# Using official Node.js runtime base image
 FROM node:10-slim
 
-WORKDIR /app
+# Set the application directory
 
+# Install nodemon
 RUN npm install -g nodemon
 
-COPY package*.json ./
+# Copy our packages definitions
 
+
+# Install node modules
 RUN npm ci \
- && npm cache clean --force \
- && mv /app/node_modules /node_modules
+	&& npm cache clean --force \
+	&& mv /app/node_modules /node_modules
 
-COPY . .
+# Copy our code from the current directory into the workdir
 
-ENV PORT 80
 
-EXPOSE 80
+# Set requires environments
 
-CMD ["node", "server.js"]
+
+# Make port 80 available for links and/or publish
+
+
+# Set default command to execute
+
